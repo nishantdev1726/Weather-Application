@@ -1,0 +1,113 @@
+/* src/App.css */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: rgba(0, 0, 0, 0.6); /* Add a background color for the overlay */
+  color: white;
+  position: relative; /* Add position property */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/bg_image.jpg'); /* Set the background image path */
+  background-size: cover;
+  background-position: fixed;
+  filter: blur(3px); /* Apply blur effect to the background image */
+  z-index: -1; /* Place the background behind other content */
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.App {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#input-container {
+  margin-bottom: 20px;
+}
+
+#weather-container {
+  width: auto;
+  height: auto; /* Adjust height automatically */
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.logo {
+  max-width: 50%; /* Set maximum width to 100% */
+  height: auto; /* Automatically adjust height while maintaining aspect ratio */
+  margin-bottom: 20px;
+}
+
+.forecast-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.forecast-item {
+  flex: 1;
+  width: 150px; /* Increase width for a larger square box */
+  height: 150px; /* Set the same height as width to make it square */
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecast-item img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+}
+
+.footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  text-align: right;
+  color: white;
+}
+
+.error-message {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  margin-top: 10px;
+}
