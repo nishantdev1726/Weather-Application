@@ -1,6 +1,6 @@
 # Weather Application
 
-This is a simple weather application that allows you to fetch current weather information and a 3-day forecast for a given city.
+This is a simple weather application that allows you to fetch current weather information and a 3-day forecast for a given city and shows you current Time.
 
 ## Website link:
 "https://weather-application-fawn.vercel.app/"
