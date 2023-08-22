@@ -21,7 +21,7 @@ body::before {
   background-image: url('/bg_image.jpg'); /* Set the background image path */
   background-size: cover;
   background-position: fixed;
-  filter: blur(3px); /* Apply blur effect to the background image */
+  filter: blur(4px); /* Apply blur effect to the background image */
   z-index: -1; /* Place the background behind other content */
 }
 
@@ -63,11 +63,14 @@ body::before {
 
 
 .logo {
-  max-width: 50%; /* Set maximum width to 100% */
-  height: auto; /* Automatically adjust height while maintaining aspect ratio */
+  max-width: 50%;
+  height: auto;
   margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.432); /* Black with 50% opacity */
+  padding: 10px; /* Add some padding to create space between logo and background */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
 }
-
 .forecast-list {
   display: flex;
   justify-content: space-between;
@@ -110,4 +113,20 @@ body::before {
   color: rgb(255, 255, 255);
   font-weight: bold;
   margin-top: 10px;
+}
+
+
+:root {
+  --current-time-position: 50%; /* Default vertical position */
+}
+
+.current-time {
+  font-family: 'Barriecito', cursive;
+  position: relative;
+  top: var(--current-time-position);
+  left: 0;
+  top: 0;
+  font-size: 100px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.74);
+  color: white;
 }

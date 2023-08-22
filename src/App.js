@@ -13,6 +13,49 @@ function App() {
   const currentWeatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
   const forecastApiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=3&aqi=no`;
 
+  function getCurrentTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  function getCurrentTimeComponents() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    return [hours[0], hours[1], minutes[0], minutes[1], seconds[0], seconds[1]];
+  }
+
+  function adjustCurrentTimePosition() {
+    const screenHeight = window.innerHeight;
+    const adjustedPosition = screenHeight * 0.3; // Adjust the factor as needed
+    document.documentElement.style.setProperty(
+      '--current-time-position',
+      `${adjustedPosition}px`
+    );
+  }
+
+  const [timeComponents, setTimeComponents] = useState(getCurrentTimeComponents());
+  
+  
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setTimeComponents(getCurrentTimeComponents());
+    }, 1000);
+
+    return () => clearInterval(timerId);
+  }, []);
+
+  useEffect(() => {
+    fetchWeatherData();
+    fetchForecastData();
+    adjustCurrentTimePosition();
+  }, []);
+
+
   const fetchWeatherData = async () => {
     try {
       setError(null); // Clear previous errors
@@ -79,8 +122,17 @@ function App() {
 
   return (
     <div className="App">
+      <div className="current-time">
+        <span className="digit">{timeComponents[0]}</span>
+        <span className="digit">{timeComponents[1]}</span>:
+        <span className="digit">{timeComponents[2]}</span>
+        <span className="digit">{timeComponents[3]}</span>:
+        <span className="digit">{timeComponents[4]}</span>
+        <span className="digit">{timeComponents[5]}</span>
+      </div>
+
       <img src={logo} alt="Logo" className="logo" />
-      <div id="input-container">
+      <div id="input-container" style={{ top: '70%' }}>
         <input
           type="text"
           placeholder="Enter city name"
