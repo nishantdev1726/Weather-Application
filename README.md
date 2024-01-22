@@ -3,7 +3,7 @@
 This is a simple weather application that allows you to fetch current weather information and a 3-day forecast for a given city and shows you current Time.
 
 ## Website link:
-"[https:///](https://weather-n-time.vercel.app/)"
+"https://weather-n-time.vercel.app/"
 
 ## Table of Contents
 
